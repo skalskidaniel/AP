@@ -11,24 +11,24 @@ using namespace std;
 
 string isValid(string s)
 {
-    int occurrencies[26] = {0};
+    int occurrences[26] = {0};
     for (auto chr : s)
     {
-        ++occurrencies[chr - 'a'];
+        ++occurrences[chr - 'a'];
     }
 
     int val = 0, hmdif = 0;
     for (int i = 0; i < 26; ++i)
     {
-        if (occurrencies[i] != 0)
+        if (occurrences[i] != 0)
         {
             if (!val) // set base value to check differences
             {
-                val = occurrencies[i];
+                val = occurrences[i];
             }
-            if (occurrencies[i] != val)
+            if (occurrences[i] != val)
             {
-                if ((abs(occurrencies[i] - val) != 1 && occurrencies[i] != 1) || hmdif == 1)
+                if ((abs(occurrences[i] - val) != 1 && occurrences[i] != 1) || hmdif == 1)
                 {
                     return "NO";
                 } else
