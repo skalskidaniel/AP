@@ -39,14 +39,14 @@ int minimumMoves(vector<string> grid, int startX, int startY, int goalX, int goa
 
     while (!distances_queue.empty())
     {
-        PointDistance cnd = distances_queue.front();
+        PointDistance current_point_distance = distances_queue.front();
         distances_queue.pop();
 
-        if (cnd.x == goalX && cnd.y == goalY)
-            return cnd.distance;
+        if (current_point_distance.x == goalX && current_point_distance.y == goalY)
+            return current_point_distance.distance;
 
-        int x = cnd.x;
-        int y = cnd.y;
+        int x = current_point_distance.x;
+        int y = current_point_distance.y;
 
         for (int dir = 0; dir < 4; dir++)
         {
@@ -59,7 +59,7 @@ int minimumMoves(vector<string> grid, int startX, int startY, int goalX, int goa
                 if (!visited[i][j])
                 {
                     visited[i][j] = true;
-                    distances_queue.push({i, j, cnd.distance + 1});
+                    distances_queue.push({i, j, current_point_distance.distance + 1});
                 }
             }
         }
